@@ -1,10 +1,32 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
+  <meta charset="utf-8">
+  <title>Organization Chart</title>
+  <link rel="icon" href="img/logo.png">
+  <link rel="stylesheet" href="css/jquery.orgchart.css">
+  <link rel="stylesheet" href="css/style.css">
+  <style type="text/css">
+    #chart-container { height: 600px; }
+    .orgchart { background: #fff; }
+  </style>
+  <body>
+<!--3285bfea87e4ecca7ff715db5c37af314f294056-->
+<div id="observablehq-chart-becf898b"></div>
+
+<div id="observablehq-chart-90c10426"></div>
+<!--<p>Credit: <a href="https://observablehq.com/@d3/sunburst">Sunburst by D3</a></p>-->
+
+<div id="observablehq-chart-30c3680c"></div>
+<!--<p>Credit: <a href="https://observablehq.com/d/650809ac2d1e5a85">Sunburst by Arya Roy</a></p>-->
+
+<script type="module">
+import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
+import define from "https://api.observablehq.com/d/650809ac2d1e5a85.js?v=3";
+new Runtime().module(define, name => {
+  if (name === "chart") return new Inspector(document.querySelector("#observablehq-chart-30c3680c"));
+});
+</script>
+
 </body>
+</head>
 </html>
