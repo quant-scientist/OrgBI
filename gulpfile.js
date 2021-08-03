@@ -58,18 +58,22 @@ gulp.task('addAssets', gulp.series('integration-tests', function () {
   return merge(jsFiles, cssFiles);
 }));
 
-gulp.task('visual-regression', function () {
-  return gulp.src('test').pipe(jest({
-    "testMatch": ['**/test/visual-regression/**/test.js']
-  }));
-});
+// gulp.task('visual-regression', function () {
+//   return gulp.src('test').pipe(jest({
+//     "testMatch": ['**/test/visual-regression/**/test.js']
+//   }));
+// });
 
-gulp.task('e2e-tests', gulp.series('addAssets', function () {
-  return gulp.src('test/e2e/**/test.js')
-    .pipe(testcafe({ browsers: ['chrome:headless', 'firefox:headless'] }));
-}));
+// gulp.task('e2e-tests', gulp.series('addAssets', function () {
+//   return gulp.src('test/e2e/**/test.js')
+//     .pipe(testcafe({ browsers: ['chrome:headless'] }));
+// }));
 
-gulp.task('test', gulp.series('e2e-tests', 'visual-regression'));
+// gulp.task('test', gulp.series('e2e-tests', 'visual-regression'));
+
+// gulp.task('test', gulp.series('e2e-tests'));
+
+// gulp.task('test');
 
 gulp.task('cleanupJS', function() {
   return del([paths.distJSFolder + '/**']);
@@ -81,7 +85,17 @@ gulp.task('eslint', function () {
     .pipe(eslint.failOnError());
 });
 
-gulp.task('js', gulp.series('cleanupJS', 'eslint', 'test', function () {
+// gulp.task('js', gulp.series('cleanupJS', 'eslint', 'test', function () {
+//   return gulp.src(paths.srcJS)
+//     .pipe(gulp.dest(paths.distJSFolder))
+//     .pipe(sourcemaps.init())
+//     .pipe(uglify())
+//     .pipe(rename('jquery.orgchart.min.js'))
+//     .pipe(sourcemaps.write('./'))
+//     .pipe(gulp.dest(paths.distJSFolder));
+// }));
+
+gulp.task('js', gulp.series('cleanupJS', 'eslint', function () {
   return gulp.src(paths.srcJS)
     .pipe(gulp.dest(paths.distJSFolder))
     .pipe(sourcemaps.init())
